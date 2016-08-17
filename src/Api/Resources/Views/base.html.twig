@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/custom/css/blog.css">
+    <link rel="stylesheet" href="/assets/custom/css/AdminLTE.min.css">
+    <script src="/assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    {% block stylesheet %}{% endblock %}
+</head>
+<body>
+<div class="blog-masthead">
+    <div class="container">
+        <nav class="nav navbar-nav navbar-static-top">
+            <ul class="nav navbar-nav">
+            {% for item in app['menus'] %}
+                <li><a class="blog-nav-item" href="{{ app.url_generator.generate(item.url) }}">{{ item.nome }}</a></li>
+            {% endfor %}
+                <li><a class="blog-nav-item" href="{{ app.url_generator.generate('postForm') }}">Novo</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="blog-nav-item" href="{{ app.url_generator.generate('login') }}">Login <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+
+<footer class="blog-footer">
+    <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">Cesar</a>.</p>
+    <p><a href="#">Back to top</a></p>
+</footer>
+
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $('.blog-nav').click(function () {
+        $('.blog-nav-item').removeClass('active');
+        $(this).addClass('active');
+    })
+</script>
+{% block javascript %}{% endblock %}
+</body>
+</html>
