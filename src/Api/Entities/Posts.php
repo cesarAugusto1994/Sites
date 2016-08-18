@@ -39,16 +39,28 @@ class Posts
     private $descricao;
 
     /**
+     * @ORM\Column(name="conteudo", type="text")
+     * @var string
+     */
+    private $conteudo;
+
+    /**
      * @ORM\Column(name="cadastro", type="datetime")
      * @var \DateTime
      */
     private $cadastro;
 
     /**
-     * @ORM\Column(name="data_cadastro", type="integer")
-     * @var integer
+     * @ORM\Column(name="year", type="string")
+     * @var string
      */
-    private $dataCadastro;
+    private $year;
+
+    /**
+     * @ORM\Column(name="month", type="string")
+     * @var string
+     */
+    private $month;
 
     /**
      * @ORM\ManyToOne(targetEntity="Usuarios")
@@ -102,7 +114,23 @@ class Posts
     {
         $this->descricao = $descricao;
     }
-
+    
+    /**
+     * @return string
+     */
+    public function getConteudo()
+    {
+        return $this->conteudo;
+    }
+    
+    /**
+     * @param string $conteudo
+     */
+    public function setConteudo($conteudo)
+    {
+        $this->conteudo = $conteudo;
+    }
+    
     /**
      * @return mixed
      */
@@ -120,19 +148,35 @@ class Posts
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getDataCadastro()
+    public function getYear()
     {
-        return $this->dataCadastro;
+        return $this->year;
     }
 
     /**
-     * @param int $dataCadastro
+     * @param string $year
      */
-    public function setDataCadastro($dataCadastro)
+    public function setYear($year)
     {
-        $this->dataCadastro = $dataCadastro;
+        $this->year = $year;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonth()
+    {
+        return $this->month;
+    }
+
+    /**
+     * @param mixed $month
+     */
+    public function setMonth($month)
+    {
+        $this->month = $month;
     }
 
     /**

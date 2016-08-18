@@ -31,6 +31,27 @@ class PostController
         ]);
     }
     
+    public function postsByYear($year, Application $app)
+    {
+        return $app['twig']->render('index.html.twig', [
+            'posts' => $app['posts.repository']->findBy(['year' => $year], ['cadastro' => 'DESC']),
+        ]);
+    }
+    
+    public function postsByYearAndMonth($year, $month, Application $app)
+    {
+        return $app['twig']->render('index.html.twig', [
+            'posts' => $app['posts.repository']->findBy(['year' => $year, 'month' => $month], ['cadastro' => 'DESC']),
+        ]);
+    }
+    
+    public function postsByAuthor($author, Application $app)
+    {
+        return $app['twig']->render('index.html.twig', [
+            'posts' => $app['posts.repository']->findBy(['usuario' => $author], ['cadastro' => 'DESC']),
+        ]);
+    }
+    
     /**
      * @param Request $request
      * @param Application $app
@@ -44,13 +65,15 @@ class PostController
         
         $post->setTitulo($request->get('titulo'));
         $post->setDescricao($request->get('descricao'));
+        $post->setConteudo(strip_tags($request->get('descricao')));
         $post->setCadastro($dataCadastro);
-        $post->setDataCadastro($dataCadastro->format('Ym'));
+        $post->setYear($dataCadastro->format('Y'));
+        $post->setMonth($dataCadastro->format('m'));
         $post->setUsuario($usuario);
         $post->setAtivo(true);
 
         $app['posts.repository']->save($post);
         
-        return $app->redirect('post/'.$post->getId().'/'.$request->get('titulo'));
+        return $app->redirect('post/'.$post->getId().'/'.substr($post->getTitulo(), 0, 20));
     }
 }

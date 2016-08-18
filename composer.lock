@@ -4,9 +4,116 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1fe7368eaa4f455cffcfcdb2a706869b",
-    "content-hash": "5d7c3677ab701eefb3fef2cb9e9f8ba3",
+    "hash": "c5ded0d7955308ccfade8d34744f1ba6",
+    "content-hash": "d405711680f27df49b507cc151165b1d",
     "packages": [
+        {
+            "name": "amstaffix/pagination",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AmsTaFFix/pagination.git",
+                "reference": "c9d08bf11d74167377964b9f64d5cf0cb9782c93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AmsTaFFix/pagination/zipball/c9d08bf11d74167377964b9f64d5cf0cb9782c93",
+                "reference": "c9d08bf11d74167377964b9f64d5cf0cb9782c93",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kilte\\Pagination\\": "source"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kilte Leichnam",
+                    "email": "nwotnbm@gmail.com"
+                },
+                {
+                    "name": "Nikita Sapogov",
+                    "email": "amstaffix@gmail.com"
+                }
+            ],
+            "description": "Simple pagination",
+            "keywords": [
+                "pagination"
+            ],
+            "time": "2016-01-26 16:30:23"
+        },
+        {
+            "name": "amstaffix/silex-pagination",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AmsTaFFix/silex-pagination.git",
+                "reference": "6c2f1445bf46d552ed6ca7641b347019688d5e4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AmsTaFFix/silex-pagination/zipball/6c2f1445bf46d552ed6ca7641b347019688d5e4e",
+                "reference": "6c2f1445bf46d552ed6ca7641b347019688d5e4e",
+                "shasum": ""
+            },
+            "require": {
+                "amstaffix/pagination": "~1.1",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.7",
+                "silex/silex": "*",
+                "twig/twig": ">=1.8,<2.0-dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kilte\\Silex\\Pagination\\": "source"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kilte Leichnam",
+                    "email": "nwotnbm@gmail.com"
+                },
+                {
+                    "name": "Nikita Sapogov",
+                    "email": "amstaffix@gmail.com"
+                }
+            ],
+            "description": "PaginationServiceProvider for Silex micro framework",
+            "keywords": [
+                "PaginationServiceProvider",
+                "pagination",
+                "silex"
+            ],
+            "time": "2016-07-05 21:32:55"
+        },
         {
             "name": "dflydev/doctrine-orm-service-provider",
             "version": "v2.0.1",
@@ -664,6 +771,77 @@
             "time": "2016-01-05 21:34:58"
         },
         {
+            "name": "knplabs/knp-components",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/knp-components.git",
+                "reference": "bc49e739d1cce94d783b1e23bc5b263b38dc47da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/bc49e739d1cce94d783b1e23bc5b263b38dc47da",
+                "reference": "bc49e739d1cce94d783b1e23bc5b263b38dc47da",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "~1.0@beta",
+                "doctrine/orm": "~2.4",
+                "doctrine/phpcr-odm": "~1.2",
+                "jackalope/jackalope-doctrine-dbal": "~1.2",
+                "phpunit/phpunit": "~4.2",
+                "ruflin/elastica": "~1.0",
+                "symfony/event-dispatcher": "~2.5"
+            },
+            "suggest": {
+                "doctrine/common": "to allow usage pagination with Doctrine ArrayCollection",
+                "doctrine/mongodb-odm": "to allow usage pagination with Doctrine ODM MongoDB",
+                "doctrine/orm": "to allow usage pagination with Doctrine ORM",
+                "doctrine/phpcr-odm": "to allow usage pagination with Doctrine ODM PHPCR",
+                "propel/propel1": "to allow usage pagination with Propel ORM",
+                "ruflin/Elastica": "to allow usage pagination with ElasticSearch Client",
+                "solarium/solarium": "to allow usage pagination with Solarium Client"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Component": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/knp-components/contributors"
+                }
+            ],
+            "description": "Knplabs component library",
+            "homepage": "http://github.com/KnpLabs/knp-components",
+            "keywords": [
+                "components",
+                "knp",
+                "knplabs",
+                "pager",
+                "paginator"
+            ],
+            "time": "2016-04-21 06:26:20"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.2",
             "source": {
@@ -794,6 +972,64 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
+        },
+        {
+            "name": "saxulum/saxulum-pagination-provider",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saxulum/saxulum-pagination-provider.git",
+                "reference": "1bc593c815c19f8a25f3e78e9ce7e23ca14c5f1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/saxulum/saxulum-pagination-provider/zipball/1bc593c815c19f8a25f3e78e9ce7e23ca14c5f1e",
+                "reference": "1bc593c815c19f8a25f3e78e9ce7e23ca14c5f1e",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-components": "~1.2,>=1.2.5",
+                "php": ">=5.5.9,<8.0",
+                "pimple/pimple": ">=2.1,<4",
+                "symfony/http-kernel": "~2.3|~3.0",
+                "symfony/translation": "~2.3|~3.0",
+                "twig/twig": "~1.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "silex/api": "~2.0@dev",
+                "silex/providers": "~2.0@dev",
+                "symfony/routing": "~2.3|~3.0"
+            },
+            "suggest": {
+                "silex/silex": "~1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Saxulum\\PaginationProvider\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dominik Zogg",
+                    "email": "dominik.zogg@gmail.com"
+                }
+            ],
+            "description": "Saxulum Pagination Provider",
+            "keywords": [
+                "cilex",
+                "knplabs",
+                "pagination",
+                "pimple",
+                "saxulum",
+                "silex"
+            ],
+            "time": "2015-12-19 18:01:42"
         },
         {
             "name": "silex/silex",
@@ -1689,6 +1925,70 @@
             "description": "Symfony Security Component",
             "homepage": "https://symfony.com",
             "time": "2016-06-29 15:24:22"
+        },
+        {
+            "name": "symfony/translation",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "d63a94528530c3ea5ff46924c8001cec4a398609"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/d63a94528530c3ea5ff46924c8001cec4a398609",
+                "reference": "d63a94528530c3ea5ff46924c8001cec4a398609",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "symfony/config": "<2.8"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~2.8|~3.0",
+                "symfony/intl": "~2.8|~3.0",
+                "symfony/yaml": "~2.8|~3.0"
+            },
+            "suggest": {
+                "psr/log": "To use logging capability in translator",
+                "symfony/config": "",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Translation\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Translation Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-06-29 05:41:56"
         },
         {
             "name": "twig/twig",

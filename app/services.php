@@ -14,12 +14,20 @@ $app['post.controller'] = function() use ($app) {
   return new \Api\Controllers\PostController();
 };
 
+$app['usuarios.controller'] = function() use ($app) {
+  return new \Api\Controllers\UsuariosController();
+};
+
 $app['menu.repository'] = function () use($app) {
   return $app['orm.em']->getRepository(\App\Entities\menu::class);
 };
 
 $app['menus'] = function () use ($app) {
   return $app['menu.repository']->findAll();
+};
+
+$app['about'] = function () {
+  return 'Blog';
 };
 
 /***********************************************
@@ -35,7 +43,11 @@ $app['posts.links.repository'] = function () use ($app) {
 };
 
 $app['posts.history'] = function () use ($app) {
-    return $app['posts.repository']->getMonthHistory();
+  return array_map(function($archive){
+     $archive['month'] = DateTime::createFromFormat('m', $archive['month']);
+    return $archive;
+  }, $app['posts.repository']->getMonthHistory());
+
 };
 
 $app['usuarios.repository'] = function () use ($app) {

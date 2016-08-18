@@ -1,0 +1,120 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', '-g', 'bower' ]
+2 info using npm@3.10.3
+3 info using node@v6.3.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData bower
+8 silly fetchNamedPackageData bower
+9 silly mapToRegistry name bower
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'bower',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'bower',
+12 silly mapToRegistry   name: 'bower',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/bower
+14 verbose request uri https://registry.npmjs.org/bower
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 2:11:43 PM
+17 verbose request id bd346c5977bdde8f
+18 verbose etag "DAFA6DH1DFZ44HGODT1YZ4KIH"
+19 http request GET https://registry.npmjs.org/bower
+20 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=write EPROTO 140616190904128:error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol:../deps/openssl/openssl/ssl/s23_clnt.c:794:
+21 info attempt registry request try #2 at 2:11:54 PM
+22 verbose etag "DAFA6DH1DFZ44HGODT1YZ4KIH"
+23 http request GET https://registry.npmjs.org/bower
+24 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=write EPROTO 140616190904128:error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol:../deps/openssl/openssl/ssl/s23_clnt.c:794:
+25 info attempt registry request try #3 at 2:12:54 PM
+26 verbose etag "DAFA6DH1DFZ44HGODT1YZ4KIH"
+27 http request GET https://registry.npmjs.org/bower
+28 silly get cb [ 304, undefined ]
+29 verbose etag https://registry.npmjs.org/bower from cache
+30 verbose get saving bower to /home/cesar/.npm/registry.npmjs.org/bower/.cache.json
+31 verbose correctMkdir /home/cesar/.npm correctMkdir not in flight; initializing
+32 silly install normalizeTree
+33 silly loadCurrentTree Finishing
+34 silly loadIdealTree Starting
+35 silly install loadIdealTree
+36 silly cloneCurrentTree Starting
+37 silly install cloneCurrentTreeToIdealTree
+38 silly cloneCurrentTree Finishing
+39 silly loadShrinkwrap Starting
+40 silly install loadShrinkwrap
+41 silly loadShrinkwrap Finishing
+42 silly loadAllDepsIntoIdealTree Starting
+43 silly install loadAllDepsIntoIdealTree
+44 silly resolveWithNewModule bower@1.7.9 checking installable status
+45 silly cache add args [ 'bower', null ]
+46 verbose cache add spec bower
+47 silly cache add parsed spec Result {
+47 silly cache add   raw: 'bower',
+47 silly cache add   scope: null,
+47 silly cache add   escapedName: 'bower',
+47 silly cache add   name: 'bower',
+47 silly cache add   rawSpec: '',
+47 silly cache add   spec: 'latest',
+47 silly cache add   type: 'tag' }
+48 silly addNamed bower@latest
+49 verbose addNamed "latest" is being treated as a dist-tag for bower
+50 info addNameTag [ 'bower', 'latest' ]
+51 silly mapToRegistry name bower
+52 silly mapToRegistry using default registry
+53 silly mapToRegistry registry https://registry.npmjs.org/
+54 silly mapToRegistry data Result {
+54 silly mapToRegistry   raw: 'bower',
+54 silly mapToRegistry   scope: null,
+54 silly mapToRegistry   escapedName: 'bower',
+54 silly mapToRegistry   name: 'bower',
+54 silly mapToRegistry   rawSpec: '',
+54 silly mapToRegistry   spec: 'latest',
+54 silly mapToRegistry   type: 'tag' }
+55 silly mapToRegistry uri https://registry.npmjs.org/bower
+56 verbose addNameTag registry:https://registry.npmjs.org/bower not in flight; fetching
+57 verbose get https://registry.npmjs.org/bower not expired, no request
+58 silly addNameTag next cb for bower with tag latest
+59 silly addNamed bower@1.7.9
+60 verbose addNamed "1.7.9" is a plain semver version for bower
+61 silly cache afterAdd bower@1.7.9
+62 verbose afterAdd /home/cesar/.npm/bower/1.7.9/package/package.json not in flight; writing
+63 verbose correctMkdir /home/cesar/.npm correctMkdir not in flight; initializing
+64 verbose afterAdd /home/cesar/.npm/bower/1.7.9/package/package.json written
+65 silly loadAllDepsIntoIdealTree Finishing
+66 silly loadIdealTree Finishing
+67 silly currentTree lib
+68 silly idealTree lib
+68 silly idealTree └── bower@1.7.9
+69 silly generateActionsToTake Starting
+70 silly install generateActionsToTake
+71 warn checkPermissions Missing write access to /usr/lib/node_modules
+72 silly rollbackFailedOptional Starting
+73 silly rollbackFailedOptional Finishing
+74 silly runTopLevelLifecycles Starting
+75 silly runTopLevelLifecycles Finishing
+76 silly install printInstalled
+77 verbose stack Error: EACCES: permission denied, access '/usr/lib/node_modules'
+77 verbose stack     at Error (native)
+78 verbose cwd /home/cesar/projetos/Silex/api
+79 error Linux 4.4.0-34-generic
+80 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "bower"
+81 error node v6.3.1
+82 error npm  v3.10.3
+83 error path /usr/lib/node_modules
+84 error code EACCES
+85 error errno -13
+86 error syscall access
+87 error Error: EACCES: permission denied, access '/usr/lib/node_modules'
+87 error     at Error (native)
+87 error  { Error: EACCES: permission denied, access '/usr/lib/node_modules'
+87 error     at Error (native)
+87 error   errno: -13,
+87 error   code: 'EACCES',
+87 error   syscall: 'access',
+87 error   path: '/usr/lib/node_modules' }
+88 error Please try running this command again as root/Administrator.
+89 verbose exit [ -13, true ]

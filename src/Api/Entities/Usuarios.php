@@ -33,6 +33,12 @@ class Usuarios
     private $nome;
 
     /**
+     * @ORM\Column(name="email", type="string")
+     * @var string
+     */
+    private $email;
+
+    /**
      * @ORM\Column(name="cadastro", type="datetime")
      * @var \DateTime
      */
@@ -66,6 +72,22 @@ class Usuarios
     public function setNome($nome)
     {
         $this->nome = $nome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
     /**

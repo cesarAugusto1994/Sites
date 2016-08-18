@@ -24,16 +24,21 @@
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
                 <h4>About</h4>
-                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <p>{{ app['about'] }}</p>
             </div>
             <div class="sidebar-module">
                 <h4>Archives</h4>
                 <ol class="list-unstyled">
                     {% for history in app['posts.history'] %}
-                    <li><a href="#">{{ history.cadastro|date('F Y') }}</a></li>
+                    <li><a href="{{ app.url_generator.generate('archives', { year : history.year }) }}">{{ history.year }}</a>
+                        <ul class="list-group-item-text">
+                            <li><a href="{{ app.url_generator.generate('archives_by_year_month', { year : history.year, month : history.month|date('m') }) }}"> {{ history.month|date('F') }}</a></li>
+                        </ul>
+                    </li>
                     {% endfor %}
                 </ol>
             </div>
+            <!--
             <div class="sidebar-module">
                 <h4>Elsewhere</h4>
                 <ol class="list-unstyled">
@@ -42,6 +47,7 @@
                     <li><a href="#">Facebook</a></li>
                 </ol>
             </div>
+            -->
         </div>
     </div>
 {% endblock %}
