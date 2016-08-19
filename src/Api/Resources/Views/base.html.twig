@@ -15,6 +15,8 @@
     <script src="/assets/plugins/ckeditor/ckeditor.js"></script>
     <!--<script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>-->
     <script src="/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     {% block stylesheet %}{% endblock %}
 </head>
 <body>
@@ -29,11 +31,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="{{ app.url_generator.generate('home') }}"><b>B</b>log</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
                     {% for item in app['menus'] %}
                         <li><a class="item" href="{{ app.url_generator.generate(item.url) }}">{{ item.nome }}</a></li>
                     {% endfor %}
@@ -43,19 +44,28 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ app.url_generator.generate('postForm') }}">Novo</a></li>
+                            <li><a href="{{ app.url_generator.generate('grid_posts') }}">Grid Posts</a></li>
+                            <li><a href="{{ app.url_generator.generate('postForm') }}">Novo Post</a></li>
                             <li><a href="{{ app.url_generator.generate('profile') }}">Perfil</a></li>
-                            <li><a href="#">Another action</a></li>
+                            <!--
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Nav header</li>
                             <li><a href="#">Separated link</a></li>
                             <li><a href="#">One more separated link</a></li>
+                            -->
                         </ul>
                     </li>
-                    <li class="active"><a href="{{ app.url_generator.generate('login') }}">Sign Out <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="{{ app.url_generator.generate('login') }}">Login <span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{ app.url_generator.generate('logout') }}">Logout </a></li>
+                    <li>
+                        <a href="{{ app.url_generator.generate('profile') }}">
+                            {% if app.session.get('user').user.username is defined %}
+                                {{ app.session.get('user').user.username }}
+                            {% endif %}</a>
+                    </li>
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
         </div>
     </nav>
 </div>
@@ -70,6 +80,12 @@
 </footer>
 
 <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/assets/custom/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/assets/custom/js/demo.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
     $('.item').click(function () {
         $('.item').removeClass('active');
@@ -77,16 +93,6 @@
     })
 </script>
 <script>
-    $(function () {
-        // Replace the <textarea id="editor1"> with a CKEditor
-        // instance, using default configuration.
-        CKEDITOR.replace('descricao');
-        //bootstrap WYSIHTML5 - text editor
-        //$(".textarea").wysihtml5();
-    });
-</script>
-<script>
-
     /**
      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */

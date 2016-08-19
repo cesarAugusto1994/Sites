@@ -30,12 +30,32 @@ $app['about'] = function () {
   return 'Blog';
 };
 
+$app['label.sorted'] = function () {
+
+  $colors = ['danger', 'primary', 'default', 'warning', 'success'];
+
+  shuffle($colors);
+
+  foreach ($colors as $key => $color) {
+    return $colors[$key];
+  }
+
+};
+
+$app['recents.posts'] = function() use ($app) {
+    return $app['posts.repository']->getMostRecents();
+};
+
 /***********************************************
  *  API
  **********************************************/
 
 $app['posts.repository'] = function () use ($app) {
   return $app['orm.em']->getRepository(\Api\Entities\Posts::class);
+};
+
+$app['tags.repository'] = function () use ($app) {
+  return $app['orm.em']->getRepository(\Api\Entities\Tags::class);
 };
 
 $app['posts.links.repository'] = function () use ($app) {

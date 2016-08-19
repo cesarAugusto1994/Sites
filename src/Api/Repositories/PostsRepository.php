@@ -34,4 +34,30 @@ class PostsRepository extends EntityRepository
             ->groupBy('p.year, p.month')
             ->getQuery()->getResult();
     }
+    
+    /**
+     * @param string $search
+     * @return array
+     */
+    public function search($search)
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.titulo LIKE :titulo')
+            ->orWhere('p.descricao LIKE :titulo')
+            ->setParameter(':titulo', '%'.$search.'%')
+            ->getQuery()->getResult();
+    }
+    
+    /**
+     * @return array
+     */
+    public function getMostRecents()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->orderBy('p.cadastro', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()->getResult();
+    }
 }

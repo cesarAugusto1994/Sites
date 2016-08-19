@@ -62,8 +62,6 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'locale_fallbacks' => array('en'),
 ));
 
-//$app->register(new \Saxulum\PaginationProvider\Provider\SaxulumPaginationProvider());
-
 $app->register(new \Saxulum\PaginationProvider\Provider\SaxulumPaginationProvider(), array(
     'knp_paginator.options' => array(
         'defaultPaginationOptions' => array(
@@ -116,8 +114,8 @@ $app['security.firewalls'] = array(
         'form' => array(
             'login_path' => '/login',
             'check_path' => '/admin/login_check',
-            #'always_use_default_target_path' => true,
-            #'default_target_path' => '/admin/',
+            'always_use_default_target_path' => true,
+            'default_target_path' => '/admin/',
         ),
         'http' => true,
         'logout' => array(

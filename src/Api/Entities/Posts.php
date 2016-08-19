@@ -63,6 +63,12 @@ class Posts
     private $month;
 
     /**
+     * @ORM\Column(name="atualizado", type="datetime")
+     * @var \DateTime
+     */
+    private $atualizado;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Usuarios")
      * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
      * @var Usuarios
@@ -177,6 +183,22 @@ class Posts
     public function setMonth($month)
     {
         $this->month = $month;
+    }
+    
+    /**
+     * @return \DateTime
+     */
+    public function getAtualizado()
+    {
+        return $this->atualizado;
+    }
+    
+    /**
+     * @param \DateTime $atualizado
+     */
+    public function setAtualizado($atualizado)
+    {
+        $this->atualizado = $atualizado;
     }
 
     /**

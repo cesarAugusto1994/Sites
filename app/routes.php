@@ -12,6 +12,12 @@ $app->get('/post/{postId}/{postTitulo}', function ($postId, $postTitulo) use ($a
     return $app['post.controller']->post($postId, $app);
 })->bind('post');
 
+$app->get('grid_posts/', function() use ($app) {
+    return $app['twig']->render('admin/grid_posts.html.twig', [
+        'posts' => $app['posts.repository']->findAll()
+    ]);
+})->bind('grid_posts');
+
 $app->get('postForm', function () use ($app) {
     return $app['twig']->render('/admin/newpost.html.twig');
 })->bind('postForm');
@@ -19,6 +25,18 @@ $app->get('postForm', function () use ($app) {
 $app->post('newPost', function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
     return $app['post.controller']->criar($request, $app);
 })->bind('newPost');
+
+$app->get('edit_post/{id}/{name}', function($id, $name) use ($app) {
+    return $app['post.controller']->editarPost($id, $app);
+})->bind('edit_post');
+
+$app->post('save_edit_post', function(\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+    return $app['post.controller']->editar($request, $app);
+})->bind('save_edit_post');
+
+$app->get('tag/{tag}', function($tag) use ($app) {
+    return $app['post.controller']->postsByTags($tag, $app);
+})->bind('tag');
 
 $app->get('/archives/{year}', function($year) use ($app){
     return $app['post.controller']->postsByYear($year, $app);
@@ -47,6 +65,22 @@ $app->post('/admin/login_check',
     function(\Symfony\Component\HttpFoundation\Request $request) use($app) {
 
 })->bind('login_check');
+
+$app->get('/admin/logout', function() use($app){
+    $app['session']->remove('user');
+})->bind('logout');
+
+$app->get('/admin/', function() use ($app) {
+    if(isset($app['user'])) {
+        $app['session']->set('user', $app['user']);
+        $app['session']->save();
+    }
+    return $app->redirect('/');
+})->bind('admin');
+
+$app->get('/search', function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+    return $app['post.controller']->search($request->get('q'), $app);
+})->bind('search');
 
 $app->get('go', function () {
     return new \Symfony\Component\HttpFoundation\Response('GO');
