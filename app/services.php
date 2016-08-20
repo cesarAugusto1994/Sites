@@ -14,16 +14,20 @@ $app['post.controller'] = function() use ($app) {
   return new \Api\Controllers\PostController();
 };
 
+$app['menu.controller'] = function () use($app) {
+  return new \App\Controllers\MenuController();
+};
+
 $app['usuarios.controller'] = function() use ($app) {
   return new \Api\Controllers\UsuariosController();
 };
 
 $app['menu.repository'] = function () use($app) {
-  return $app['orm.em']->getRepository(\App\Entities\menu::class);
+  return $app['orm.em']->getRepository(\App\Entities\Menu::class);
 };
 
 $app['menus'] = function () use ($app) {
-  return $app['menu.repository']->findAll();
+  return $app['menu.repository']->findBy(['ativo' => true]);
 };
 
 $app['about'] = function () {

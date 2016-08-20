@@ -6,7 +6,12 @@
     <link rel="stylesheet" href="/assets/plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css">
 {% endblock %}
 
-{% block content %}
+{% block body %}
+
+    <div class="blog-header">
+        <h1 class="blog-title">Editar Post</h1>
+        <p class="lead blog-description"></p>
+    </div>
 
     <form method="post" class="form-horizontal" action="{{ app.url_generator.generate('save_edit_post') }}">
         <input type="hidden" name="id" value="{{ post.id }}">
@@ -32,7 +37,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" id="confirm" class="btn btn-default">Save</button>
+                <button type="submit" id="confirm" class="btn btn-bitbucket">Salvar</button>
                 <a id="add" class="btn btn-link" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-link"></span></a>
             </div>
         </div>

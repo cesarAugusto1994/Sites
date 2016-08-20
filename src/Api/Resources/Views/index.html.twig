@@ -1,6 +1,6 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Index{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
 
@@ -47,7 +47,13 @@
             </p>
         </div>
     {% else %}
-        <p class="lead"><i class="fa"></i> Nada Encontrado.</p>
+
+        <div class="blog-header">
+            <h1 class="blog-title"><i class="fa fa-frown-o"></i> Opss..</h1>
+            <p class="lead blog-description"></p>
+        </div>
+
+        <p class="lead">N&atilde;o foi encontrado nenhum assunto relacionado a sua Pesquisa.</p>
     {% endfor %}
 
 {% endblock %}

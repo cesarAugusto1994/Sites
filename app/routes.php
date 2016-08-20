@@ -14,7 +14,7 @@ $app->get('/post/{postId}/{postTitulo}', function ($postId, $postTitulo) use ($a
 
 $app->get('grid_posts/', function() use ($app) {
     return $app['twig']->render('admin/grid_posts.html.twig', [
-        'posts' => $app['posts.repository']->findAll()
+        'posts' => $app['posts.repository']->findBy([], ['cadastro' => 'DESC'])
     ]);
 })->bind('grid_posts');
 
@@ -33,6 +33,10 @@ $app->get('edit_post/{id}/{name}', function($id, $name) use ($app) {
 $app->post('save_edit_post', function(\Symfony\Component\HttpFoundation\Request $request) use ($app) {
     return $app['post.controller']->editar($request, $app);
 })->bind('save_edit_post');
+
+$app->get('status_post/{id}', function($id) use ($app) {
+    return $app['post.controller']->alterarStatus((int)$id, $app);
+})->bind('status_post');
 
 $app->get('tag/{tag}', function($tag) use ($app) {
     return $app['post.controller']->postsByTags($tag, $app);
@@ -81,6 +85,38 @@ $app->get('/admin/', function() use ($app) {
 $app->get('/search', function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
     return $app['post.controller']->search($request->get('q'), $app);
 })->bind('search');
+
+/**
+ * Menu Blog
+ */
+
+$app->get('menu', function() use ($app) {
+    return $app['menu.controller']->index($app);
+})->bind('menu');
+
+$app->post('novo_menu', function(\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+    return $app['menu.controller']->criar($request, $app);
+})->bind('novo_menu');
+
+$app->post('edit_menu', function(\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+    return $app['menu.controller']->editar($request, $app);
+})->bind('novo_menu');
+
+$app->get('edit_menu/{id}', function($id) use ($app) {
+    return $app['twig']->render('admin/edit_blog_menu.html.twig', ['menu' => $app['menu.repository']->find($id)]);
+})->bind('edit_menu');
+
+$app->post('save_edit_menu', function(\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+    return $app['menu.controller']->editar($request, $app);
+})->bind('save_edit_menu');
+
+$app->get('alterar_suatus_menu/{id}', function($id) use ($app) {
+    return $app['menu.controller']->alterarStatus((int)$id, $app);
+})->bind('alterar_suatus_menu');
+
+$app->get('events', function(){
+
+})->bind('events');
 
 $app->get('go', function () {
     return new \Symfony\Component\HttpFoundation\Response('GO');

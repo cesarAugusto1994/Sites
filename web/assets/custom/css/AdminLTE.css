@@ -1157,7 +1157,7 @@ a:focus {
   }
 }
 /* Add fade animation to dropdown menus by appending
- the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/
+ the class .animated-dropdown-Menu to the .dropdown-Menu ul (or ol)*/
 .open:not(.dropup) > .animated-dropdown-menu {
   backface-visibility: visible !important;
   -webkit-animation: flipInX 0.7s both;
@@ -1206,7 +1206,7 @@ a:focus {
     -webkit-transform: perspective(400px);
   }
 }
-/* Fix dropdown menu in navbars */
+/* Fix dropdown Menu in navbars */
 .navbar-custom-menu > .navbar-nav > li {
   position: relative;
 }

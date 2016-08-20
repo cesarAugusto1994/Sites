@@ -26,12 +26,12 @@ class PostController
      */
     public function post($id, Application $app)
     {
-        $post = $app['posts.repository']->find($id);
+        $post = $app['posts.repository']->findBy(['id' => $id, 'ativo' => true]);
         $tags = $app['tags.repository']->findBy(['post' => $id]);
         $links = $app['posts.links.repository']->findBy(['post' => $id]);
 
         return $app['twig']->render('post.html.twig', [
-            'post' => $post,
+            'post' => current($post),
             'tags' => $tags,
             'links' => $links
         ]);
@@ -45,7 +45,7 @@ class PostController
     public function postsByYear($year, Application $app)
     {
         return $app['twig']->render('index.html.twig', [
-            'posts' => $app['posts.repository']->findBy(['year' => $year], ['cadastro' => 'DESC']),
+            'posts' => $app['posts.repository']->findBy(['year' => $year, 'ativo' => true], ['cadastro' => 'DESC']),
         ]);
     }
 
@@ -58,7 +58,7 @@ class PostController
     public function postsByYearAndMonth($year, $month, Application $app)
     {
         return $app['twig']->render('index.html.twig', [
-            'posts' => $app['posts.repository']->findBy(['year' => $year, 'month' => $month], ['cadastro' => 'DESC']),
+            'posts' => $app['posts.repository']->findBy(['year' => $year, 'month' => $month, 'ativo' => true], ['cadastro' => 'DESC']),
         ]);
     }
 
@@ -70,7 +70,7 @@ class PostController
     public function postsByAuthor($author, Application $app)
     {
         return $app['twig']->render('index.html.twig', [
-            'posts' => $app['posts.repository']->findBy(['usuario' => $author], ['cadastro' => 'DESC']),
+            'posts' => $app['posts.repository']->findBy(['usuario' => $author, 'ativo' => true], ['cadastro' => 'DESC']),
         ]);
     }
     
@@ -161,5 +161,29 @@ class PostController
         }
         
         return $app->redirect('post/'.$post->getId().'/'.substr($post->getTitulo(), 0, 30));
+    }
+    
+    /**
+     * @param int $id
+     * @param Application $app
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+        public function alterarStatus($id, Application $app)
+    {
+        /**
+         * Posts $post
+         */
+        $post = $app['posts.repository']->find($id);
+        $post->setAtualizado(new \DateTime('now'));
+
+        if ($post->isAtivo() == true) {
+            $post->setAtivo(false);
+        } else {
+            $post->setAtivo(true);
+        }
+    
+        $app['posts.repository']->save($post);
+    
+        return $app->redirect('/grid_posts');
     }
 }

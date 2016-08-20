@@ -45,7 +45,7 @@
           .parent()
           .before(tab_button);
 
-  //Create the menu
+  //Create the Menu
   var demo_settings = $("<div />");
 
   //Layout options

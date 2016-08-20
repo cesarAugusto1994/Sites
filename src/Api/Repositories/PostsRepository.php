@@ -45,7 +45,9 @@ class PostsRepository extends EntityRepository
             ->select('p')
             ->where('p.titulo LIKE :titulo')
             ->orWhere('p.descricao LIKE :titulo')
+            ->andWhere('p.ativo = :ativo')
             ->setParameter(':titulo', '%'.$search.'%')
+            ->setParameter(':ativo', true)
             ->getQuery()->getResult();
     }
     
@@ -56,6 +58,8 @@ class PostsRepository extends EntityRepository
     {
         return $this->createQueryBuilder('p')
             ->select('p')
+            ->where('p.ativo = :ativo')
+            ->setParameter(':ativo', true)
             ->orderBy('p.cadastro', 'DESC')
             ->setMaxResults(5)
             ->getQuery()->getResult();

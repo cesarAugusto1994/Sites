@@ -1,28 +1,45 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Novo Post{% endblock %}
+{% block title %}Grid Posts{% endblock %}
 
 {% block stylesheet %}
 
 {% endblock %}
 
-{% block content %}
+{% block body %}
 
     <table class="table table-bordered">
         <caption>Grid Posts</caption>
         <thead>
         <tr>
+            <th>#</th>
             <th>Titulo</th>
             <th>Autor</th>
-            <th>Data</th>
+            <th>Criado em</th>
+            <th>Atualizado em</th>
         </tr>
         </thead>
         <tbody>
         {% for post in posts %}
-        <tr>
+        <tr {% if post.ativo == 0 %} class="danger" {% endif %}>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="{{ app.url_generator.generate('post', { postId : post.id, postTitulo : post.titulo|slice(0, 30)|replace(' ', '-')|lower }) }}">Ir</a></li>
+                        <li><a href="{{ app.url_generator.generate('edit_post', { id : post.id, name : post.titulo|replace({'.': '', ' ' : '+' })|lower }) }}">Editar</a></li>
+                        <li><a href="{{ app.url_generator.generate('status_post', { id : post.id }) }}">{% if post.ativo == 1 %}Inativar{% else %}Ativar{% endif %} Publica&ccedil;&atilde;o</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Outros</a></li>
+                    </ul>
+                </div>
+            </td>
             <td>{{ post.titulo }}</td>
             <td><a href="{{ app.url_generator.generate('author', { author : post.usuario.id, name : post.usuario.nome|replace(' ', '_')|lower }) }}">{{ post.usuario.nome }}</a></td>
-            <td>{{ post.cadastro|date('d/F/y H:i:s') }}</td>
+            <td>{{ post.cadastro|date('d/m/y H:i:s') }}</td>
+            <td>{{ post.atualizado|date('d/m/y H:i:s') }}</td>
         </tr>
         {% endfor %}
         </tbody>

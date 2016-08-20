@@ -38,14 +38,14 @@ $.AdminLTE.options = {
   //in every page before app.js
   navbarMenuSlimscroll: true,
   navbarMenuSlimscrollWidth: "3px", //The width of the scroll bar
-  navbarMenuHeight: "200px", //The height of the inner menu
+  navbarMenuHeight: "200px", //The height of the inner Menu
   //General animation speed for JS animated elements such as box collapse/expand and
   //sidebar treeview slide up/down. This options accepts an integer as milliseconds,
   //'fast', 'normal', or 'slow'
   animationSpeed: 500,
-  //Sidebar push menu toggle button selector
+  //Sidebar push Menu toggle button selector
   sidebarToggleSelector: "[data-toggle='offcanvas']",
-  //Activate sidebar push menu
+  //Activate sidebar push Menu
   sidebarPushMenu: true,
   //Activate sidebar slimscroll if the fixed layout is set (requires SlimScroll Plugin)
   sidebarSlimScroll: true,
@@ -169,14 +169,14 @@ $(function () {
 
   //Add slimscroll to navbar dropdown
   if (o.navbarMenuSlimscroll && typeof $.fn.slimscroll != 'undefined') {
-    $(".navbar .menu").slimscroll({
+    $(".navbar .Menu").slimscroll({
       height: o.navbarMenuHeight,
       alwaysVisible: false,
       size: o.navbarMenuSlimscrollWidth
     }).css("width", "100%");
   }
 
-  //Activate sidebar push menu
+  //Activate sidebar push Menu
   if (o.sidebarPushMenu) {
     $.AdminLTE.pushMenu.activate(o.sidebarToggleSelector);
   }
@@ -303,7 +303,7 @@ function _init() {
 
   /* PushMenu()
    * ==========
-   * Adds the push menu functionality to the sidebar.
+   * Adds the push Menu functionality to the sidebar.
    *
    * @type Function
    * @usage: $.AdminLTE.pushMenu("[data-toggle='offcanvas']")
@@ -317,7 +317,7 @@ function _init() {
       $(toggleBtn).on('click', function (e) {
         e.preventDefault();
 
-        //Enable sidebar push menu
+        //Enable sidebar push Menu
         if ($(window).width() > (screenSizes.sm - 1)) {
           if ($("body").hasClass('sidebar-collapse')) {
             $("body").removeClass('sidebar-collapse').trigger('expanded.pushMenu');
@@ -325,7 +325,7 @@ function _init() {
             $("body").addClass('sidebar-collapse').trigger('collapsed.pushMenu');
           }
         }
-        //Handle sidebar push menu for small screens
+        //Handle sidebar push Menu for small screens
         else {
           if ($("body").hasClass('sidebar-open')) {
             $("body").removeClass('sidebar-open').removeClass('sidebar-collapse').trigger('collapsed.pushMenu');
@@ -336,7 +336,7 @@ function _init() {
       });
 
       $(".content-wrapper").click(function () {
-        //Enable hide menu when clicking on the content-wrapper on small screens
+        //Enable hide Menu when clicking on the content-wrapper on small screens
         if ($(window).width() <= (screenSizes.sm - 1) && $("body").hasClass("sidebar-open")) {
           $("body").removeClass('sidebar-open');
         }
@@ -380,7 +380,7 @@ function _init() {
   /* Tree()
    * ======
    * Converts the sidebar into a multilevel
-   * tree view menu.
+   * tree view Menu.
    *
    * @type Function
    * @Usage: $.AdminLTE.tree('.sidebar')
@@ -393,31 +393,31 @@ function _init() {
       var $this = $(this);
       var checkElement = $this.next();
 
-      //Check if the next element is a menu and is visible
-      if ((checkElement.is('.treeview-menu')) && (checkElement.is(':visible'))) {
-        //Close the menu
+      //Check if the next element is a Menu and is visible
+      if ((checkElement.is('.treeview-Menu')) && (checkElement.is(':visible'))) {
+        //Close the Menu
         checkElement.slideUp(animationSpeed, function () {
-          checkElement.removeClass('menu-open');
+          checkElement.removeClass('Menu-open');
           //Fix the layout in case the sidebar stretches over the height of the window
           //_this.layout.fix();
         });
         checkElement.parent("li").removeClass("active");
       }
-      //If the menu is not visible
-      else if ((checkElement.is('.treeview-menu')) && (!checkElement.is(':visible'))) {
-        //Get the parent menu
+      //If the Menu is not visible
+      else if ((checkElement.is('.treeview-Menu')) && (!checkElement.is(':visible'))) {
+        //Get the parent Menu
         var parent = $this.parents('ul').first();
         //Close all open menus within the parent
         var ul = parent.find('ul:visible').slideUp(animationSpeed);
-        //Remove the menu-open class from the parent
-        ul.removeClass('menu-open');
+        //Remove the Menu-open class from the parent
+        ul.removeClass('Menu-open');
         //Get the parent li
         var parent_li = $this.parent("li");
 
-        //Open the target menu and add the menu-open class
+        //Open the target Menu and add the Menu-open class
         checkElement.slideDown(animationSpeed, function () {
           //Add the class active to the parent li
-          checkElement.addClass('menu-open');
+          checkElement.addClass('Menu-open');
           parent.find('li.active').removeClass('active');
           parent_li.addClass('active');
           //Fix the layout in case the sidebar stretches over the height of the window
@@ -425,7 +425,7 @@ function _init() {
         });
       }
       //if this isn't a link, prevent the page from being redirected
-      if (checkElement.is('.treeview-menu')) {
+      if (checkElement.is('.treeview-Menu')) {
         e.preventDefault();
       }
     });
