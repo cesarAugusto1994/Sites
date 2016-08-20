@@ -44,6 +44,12 @@ class menu
     private $url;
 
     /**
+     * @ORM\Column(name="icon", type="string")
+     * @var string
+     */
+    private $icon;
+
+    /**
      * @ORM\Column(name="cadastro", type="datetime")
      * @var \DateTime
      */
@@ -109,6 +115,22 @@ class menu
     public function setUrl($url)
     {
         $this->url = $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param string $icon
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
     }
 
     /**

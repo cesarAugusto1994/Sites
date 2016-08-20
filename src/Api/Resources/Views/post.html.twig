@@ -13,20 +13,22 @@
 {% block content %}
 
     <div class="blog-post">
-        <h2 class="blog-post-title">{{ post.titulo }}</h2>
+        <h2 class="blog-post-title">{{ post.titulo }}
+            <a href="{{ app.url_generator.generate('edit_post', { id : post.id, name : post.titulo|replace({'.': '', ' ' : '+' })|lower }) }}"><button class="btn btn-flat"><span class="fa fa-edit"></span></button></a>
+        </h2>
         <small class="blog-post-meta">Created {{ post.cadastro|date('F j, Y H:i') }} by <a href="{{ app.url_generator.generate('author', { author : post.usuario.id, name : post.usuario.nome|replace({'.': '', ' ' : '+' })|lower }) }}">{{ post.usuario.nome }}</a>
         {% if post.atualizado %} Updated {{ post.atualizado|date('F j, Y H:i') }}{% endif %}</small>
-        {% if tags is defined %}
-            <p>
-                Tags:
-                {% for tag in tags %}
-                    <small><a href="{{ app.url_generator.generate('tag', { tag : tag.id }) }}"><label
-                                    class="label label-{{ app['label.sorted'] }}">{{ tag.nome }}</label></a></small>
-                {% endfor %}</p>
-        {% endif %}
-        <div class="text-right"><a href="{{ app.url_generator.generate('edit_post', { id : post.id, name : post.titulo|replace({'.': '', ' ' : '+' })|lower }) }}"><button class="btn btn-link">Edit Post</button></a></div>
-        <div id="conteudo">{{ post.descricao|raw }}</div>
+        <div id="conteudo"><p class="text-justify">{{ post.descricao|raw }}</p></div>
     </div>
+
+    {% if tags is defined %}
+        <p>
+            Tags:
+            {% for tag in tags %}
+                <small><a href="{{ app.url_generator.generate('tag', { tag : tag.id }) }}"><label
+                                class="label label-{{ app['label.sorted'] }}">{{ tag.nome }}</label></a></small>
+            {% endfor %}</p>
+    {% endif %}
 
     <table class="table table-bordered table-responsive">
         <tbody>
@@ -49,78 +51,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <!--
-    <div class="col-md-12">
-        <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#activity" data-toggle="tab">Vozes</a></li>
-                <li><a href="#timeline" data-toggle="tab">Instrumentos</a></li>
-                <li><a href="#settings" data-toggle="tab">Settings</a></li>
-            </ul>
-            <div class="tab-content">
-                <div class="active tab-pane" id="activity">
-                    <table class="table">
-                        <tbody>
-                        {% for link in links %}
-                            {% if link.media == 'audio' %}
-                            <tr>
-                                <td>
-                                    <p class="lead">{{ link.titulo }}</p>
-                                    <iframe width="100%" height="166" scrolling="no" frameborder="no" src="{{ link.url }}&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
-                                </td>
-                            </tr>
-                            {% endif %}
-                        {% else %}
-                            <tr>
-                                <td>Sem anexos.</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="tab-pane" id="timeline">
-                    <table class="table">
-                        <tbody>
-                        {% for link in links %}
-                            {% if link.media == 'PDF' %}
-                                <tr>
-                                    <td>
-                                        <p class="lead"><a target="_blank" href="{{ link.url }}">{{ link.titulo }}</a></p>
-                                    </td>
-                                </tr>
-                            {% endif %}
-                        {% else %}
-                            <tr>
-                                <td>Sem anexos.</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="tab-pane" id="settings">
-                    <table class="table">
-                        <tbody>
-                        {% for link in links %}
-                            {% if link.media == 'video' %}
-                                <tr>
-                                    <td>
-                                        <p class="lead">{{ link.titulo }}</p>
-                                        <iframe width="100%" height="166" scrolling="no" frameborder="no" src="{{ link.url }}&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
-                                    </td>
-                                </tr>
-                            {% endif %}
-                        {% else %}
-                            <tr>
-                                <td>Sem anexos.</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <div id="disqus_thread"></div>
 
