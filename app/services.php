@@ -47,15 +47,11 @@ $app['about'] = function () {
 };
 
 $app['label.sorted'] = function () {
-
   $colors = ['danger', 'primary', 'default', 'warning', 'success'];
-
   shuffle($colors);
-
   foreach ($colors as $key => $color) {
     return $colors[$key];
   }
-
 };
 
 $app['recents.posts'] = function() use ($app) {
@@ -87,11 +83,21 @@ $app['posts.history'] = function () use ($app) {
      $archive['month'] = DateTime::createFromFormat('m', $archive['month']);
     return $archive;
   }, $app['posts.repository']->getMonthHistory());
-
 };
 
 $app['usuarios.repository'] = function () use ($app) {
   return $app['orm.em']->getRepository(\Api\Entities\Usuarios::class);
 };
 
+$app['widgets.repository'] = function () use ($app) {
+  return $app['orm.em']->getRepository(\App\Entities\Widgets::class);
+};
+
+$app['widgets.controller'] = function () use($app) {
+  return new \App\Controllers\WidgetsController();
+};
+
+$app['widgets'] = function () use($app) {
+  return $app['widgets.controller']->getAll($app);
+};
 

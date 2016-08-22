@@ -28,11 +28,13 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        {% if post.ativo == 1 %}
                         <li><a href="{{ app.url_generator.generate('post', { postId : post.id, postTitulo : post.titulo|slice(0, 30)|replace(' ', '-')|lower }) }}">Ir</a></li>
                         <li><a href="{{ app.url_generator.generate('edit_post', { id : post.id, name : post.titulo|replace({'.': '', ' ' : '+' })|lower }) }}">Editar</a></li>
+                        {% endif %}
                         <li><a href="{{ app.url_generator.generate('status_post', { id : post.id }) }}">{% if post.ativo == 1 %}Inativar{% else %}Ativar{% endif %} Publica&ccedil;&atilde;o</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Outros</a></li>
+                        <li><a href="#">Apagar</a></li>
                     </ul>
                 </div>
             </td>

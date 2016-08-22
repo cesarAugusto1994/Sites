@@ -1,7 +1,10 @@
 {% extends 'template.html.twig' %}
 
-
 {% block title %}Blog Settings{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/plugins/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
+{% endblock %}
 
 {% block body %}
 
@@ -28,6 +31,30 @@
             </div>
         </form>
 
+        <table class="table">
+            <caption>Widgets</caption>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>On/Off</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for widget in app['widgets'] %}
+                <tr>
+                    <td><p class="lead">{{ widget.nome }}</p></td>
+                    <td><input type="checkbox" class="switcher" name="status" {% if widget.ativo == 1 %} checked {% endif %}></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 
+{% endblock %}
+
+{% block javascript %}
+    <script src="/assets/plugins/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript">
+        $(".switcher").bootstrapSwitch();
+    </script>
 {% endblock %}

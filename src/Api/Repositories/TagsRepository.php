@@ -37,5 +37,18 @@ class TagsRepository extends EntityRepository
             ->setParameter(':nome', $nome)
             ->getQuery()->getResult();
     }
+
+    /**
+     * @return array
+     */
+    public function findByPostsAtivos()
+    {
+        return $this->createQueryBuilder('t')
+            ->select('t')
+            ->innerJoin('t.posts', 'p', \Doctrine\ORM\Query\Expr\Join::ON, 't.post_id = p.id')
+            ->where('p.ativo = :ativo')
+            ->setParameter('ativo', true)
+            ->getQuery()->getResult();
+    }
     
 }

@@ -11,9 +11,9 @@
             href="{{ app.url_generator.generate('author', { author : post.usuario.id, name : post.usuario.nome|replace(' ', '_')|lower }) }}">{{ post.usuario.nome }}</a>
              Updated {{ post.atualizado|date('F j, Y H:i') }}</small></p>
             {% if post.descricao|length < 1000  %}
-                    <p class="text-justify">{{ post.descricao|raw }}{% if post.descricao|length > 250 %}...{% endif %}</p>
+                    <p class="lead text-justify">{{ post.descricao|raw }}{% if post.descricao|length > 250 %}...{% endif %}</p>
             {% else %}
-                    <p class="text-justify">{{ post.conteudo|slice(0, 500)|trim|raw }}{% if post.descricao|length > 250 %}...{% endif %}</p>
+                    <p class="lead text-justify">{{ post.conteudo|slice(0, 500)|trim|raw }}{% if post.descricao|length > 250 %}...{% endif %}</p>
             {% endif %}
             <p>
                 <a class="label label-default"

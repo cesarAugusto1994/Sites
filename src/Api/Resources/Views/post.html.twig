@@ -45,6 +45,24 @@
         </tbody>
     </table>
 
+    <div class="sidebar-module">
+        <h4>Relacionados:</h4>
+        {% for relacionado in posts_relacionados %}
+            {% if relacionado.id != post.id %}
+                {% if relacionado.ativo == 1 %}
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" style="height: 175px">
+                            <div class="caption">
+                                <h3><a href="{{ app.url_generator.generate('post', { postId : relacionado.id, postTitulo : relacionado.titulo|replace(' ', '-')|lower }) }}">{{ relacionado.titulo|slice(0, 60) }}</a></h3>
+                                <p>{{ relacionado.conteudo|escape('html')|slice(0, 100) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
     <div id="disqus_thread"></div>
 
     <script id="dsq-count-scr" src="//site-14.disqus.com/count.js" async></script>
