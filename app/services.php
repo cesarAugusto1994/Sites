@@ -43,7 +43,7 @@ $app['config'] = function () use ($app) {
 };
 
 $app['about'] = function () {
-  return 'Blog';
+  return 'Aenean placerat. In vulputate urna eu arcu. Aliquam erat volutpat. Suspendisse potenti. Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl.';
 };
 
 $app['label.sorted'] = function () {
@@ -60,6 +60,10 @@ $app['label.sorted'] = function () {
 
 $app['recents.posts'] = function() use ($app) {
     return $app['posts.repository']->getMostRecents();
+};
+
+$app['categories'] = function() use ($app) {
+  return $app['tags.repository']->findAll();
 };
 
 /***********************************************

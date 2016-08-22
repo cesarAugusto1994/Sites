@@ -25,4 +25,17 @@ class TagsRepository extends EntityRepository
         $this->getEntityManager()->persist($tags);
         $this->getEntityManager()->flush($tags);
     }
+    
+    /**
+     * @param string $nome
+     * @return array
+     */
+    public function findByName($nome)
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.nome LIKE :nome')
+            ->setParameter(':nome', $nome)
+            ->getQuery()->getResult();
+    }
+    
 }

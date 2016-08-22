@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Sobre{% endblock %}
+
 {% block body %}
     <div class="row">
 
@@ -8,6 +10,7 @@
             <p class="lead blog-description"></p>
         </div>
 
-            <p>{{ app['about'] }}</p>
+        <p class="lead">{{ app['about'] }}</p>
+
     </div>
 {% endblock %}

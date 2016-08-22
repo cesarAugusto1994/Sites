@@ -36,7 +36,7 @@ $app->get('status_post/{id}', function($id) use ($app) {
     return $app['post.controller']->alterarStatus((int)$id, $app);
 })->bind('status_post');
 
-$app->get('tag/{tag}', function($tag) use ($app) {
+$app->get('tag/{id}/{tag}', function($id, $tag) use ($app) {
     return $app['post.controller']->postsByTags($tag, $app);
 })->bind('tag');
 

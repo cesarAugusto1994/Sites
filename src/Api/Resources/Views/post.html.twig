@@ -18,7 +18,7 @@
         <p>
             Tags:
             {% for tag in tags %}
-                <small><a href="{{ app.url_generator.generate('tag', { tag : tag.id }) }}"><label
+                <small><a href="{{ app.url_generator.generate('tag', { id : tag.id, tag : tag.nome }) }}"><label
                                 class="label label-{{ app['label.sorted'] }}">{{ tag.nome }}</label></a></small>
             {% endfor %}</p>
     {% endif %}

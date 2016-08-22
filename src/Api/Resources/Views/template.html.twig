@@ -15,6 +15,12 @@
                 <p>{{ app['about'] }}</p>
             </div>
             <div class="sidebar-module sidebar-module-inset">
+                <h4>Categories</h4>
+            {% for tag in app['categories'] %}
+                <a href="{{ app.url_generator.generate('tag', { id : tag.id, tag : tag.nome }) }}">{{ tag.nome }}</a>
+            {% endfor %}
+            </div>
+            <div class="sidebar-module sidebar-module-inset">
                 <h4>Recents</h4>
                 {% for post in app['recents.posts'] %}
                     <p><a href="{{ app.url_generator.generate('post', { postId : post.id, postTitulo : post.titulo|slice(0, 30)|replace(' ', '-')|lower }) }}">{{ post.titulo }}</a></p>

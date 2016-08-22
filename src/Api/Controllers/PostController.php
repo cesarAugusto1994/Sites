@@ -73,13 +73,23 @@ class PostController
             'posts' => $app['posts.repository']->findBy(['usuario' => $author, 'ativo' => true], ['cadastro' => 'DESC']),
         ]);
     }
-    
+
+    /**
+     * @param int $tag
+     * @param Application $app
+     * @return mixed
+     */
     public function postsByTags($tag, Application $app)
     {
-        $posts = $app['tags.repository']->findBy(['id' => $tag]);
+        $tags = $app['tags.repository']->findByName($tag);
+        $posts = [];
+
+        foreach ($tags as $tag) {
+            $posts[] = $tag->getPost();
+        }
 
         return $app['twig']->render('index.html.twig', [
-            'posts' => $app['tags.repository']->findBy(['id' => $tag]),
+            'posts' => $posts,
         ]);
     }
 
