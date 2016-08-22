@@ -33,3 +33,11 @@ $app->post('save_edit_menu', function(\Symfony\Component\HttpFoundation\Request 
 $app->get('alterar_suatus_menu/{id}', function($id) use ($app) {
     return $app['menu.controller']->alterarStatus((int)$id, $app);
 })->bind('alterar_suatus_menu');
+
+$app->get('/blog/settings', function () use ($app) {
+    return $app['twig']->render('admin/blog_settings.html.twig');
+})->bind('blog_settings');
+
+$app->post('/blog/settings', function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+    return $app['config.controller']->editar($request, $app);
+})->bind('blog_settings_save');

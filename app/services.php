@@ -22,12 +22,24 @@ $app['usuarios.controller'] = function() use ($app) {
   return new \Api\Controllers\UsuariosController();
 };
 
+$app['config.controller'] = function () use($app) {
+  return new \App\Controllers\ConfigController();
+};
+
 $app['menu.repository'] = function () use($app) {
   return $app['orm.em']->getRepository(\App\Entities\Menu::class);
 };
 
+$app['config.repository'] = function () use($app) {
+  return $app['orm.em']->getRepository(\App\Entities\Config::class);
+};
+
 $app['menus'] = function () use ($app) {
   return $app['menu.repository']->findBy(['ativo' => true]);
+};
+
+$app['config'] = function () use ($app) {
+  return $app['config.controller']->index($app);
 };
 
 $app['about'] = function () {
