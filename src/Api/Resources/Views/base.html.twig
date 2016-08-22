@@ -39,13 +39,13 @@
                         <li><a class="fa fa-{{ item.icon }}" href="{{ app.url_generator.generate(item.url) }}"  data-toggle="tooltip" data-placement="bottom" title="{{ item.nome }}"></a></li>
                     {% endfor %}
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
 
+                <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if app.session.get('user').user.username is defined %}
-                            <i class="fa fa-user" aria-hidden="true"></i> {{ app.session.get('user').user.username }}
-                                {% else %}
-                                Admin
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"><i class="fa fa-user"
+                                                    aria-hidden="true"></i>{% if app.session.get('user').user.username is defined %}
+                                {{ app.session.get('user').user.username }}
                             {% endif %} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ app.url_generator.generate('grid_posts') }}">Grid Posts</a></li>
@@ -67,6 +67,15 @@
                         <li class="active"><a class="fa fa-sign-in" href="{{ app.url_generator.generate('login') }}" data-toggle="tooltip" data-placement="bottom" title="Login"><span class="sr-only">(current)</span></a></li>
                     {% endif %}
                 </ul>
+                <form action="{{ app.url_generator.generate('search') }}" method="get" class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <input type="text"  name="q" class="form-control" placeholder="Pesquisar...">
+                      <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-default"><i
+                                    class="fa fa-search"></i></button>
+                      </span>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>

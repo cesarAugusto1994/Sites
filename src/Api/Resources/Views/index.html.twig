@@ -4,41 +4,16 @@
 
 {% block content %}
 
-{#
-    {% for post in posts %}
-        <div class="blog-post">
-            <h2 class="blog-post-title">{{ post.titulo }}</h2>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        {{ post.cadastro|date('F j, Y') }} by <a class="label label-default"
-                                                                        href="{{ app.url_generator.generate('author', { author : post.usuario.id, name : post.usuario.nome|replace(' ', '_')|lower }) }}">{{ post.usuario.nome }}</a>
-
-                    </h3>
-                </div>
-                <div class="panel-body callout">
-                    {{ post.descricao|slice(0, 250)|striptags }} {% if post.descricao|length > 250 %}...{% endif %}
-                </div>
-            </div>
-            <p>
-                <a class="label label-default"
-                   href="{{ app.url_generator.generate('post', { postId : post.id, postTitulo : post.titulo|slice(0, 30)|replace(' ', '-')|lower }) }}">Saiba
-                    mais...</a>
-            </p>
-        </div>
-    {% endfor %}
-#}
-
     {% for post in posts %}
         <div class="blog-post sidebar-nav">
             <h2 class="blog-post-title">{{ post.titulo }}</h2>
-            <p class="blog-post-meta">{{ post.cadastro|date('F j, Y') }} by <small><a class="label label-default"
+            <p class="blog-post-meta"><small>{{ post.cadastro|date('F j, Y H:i') }} by <a
             href="{{ app.url_generator.generate('author', { author : post.usuario.id, name : post.usuario.nome|replace(' ', '_')|lower }) }}">{{ post.usuario.nome }}</a>
-            </small></p>
+             Updated {{ post.atualizado|date('F j, Y H:i') }}</small></p>
             {% if post.descricao|length < 1000  %}
                     <p class="text-justify">{{ post.descricao|raw }}{% if post.descricao|length > 250 %}...{% endif %}</p>
             {% else %}
-                    <p class="text-justify">{{ post.conteudo|slice(0, 350)|trim|raw }}{% if post.descricao|length > 250 %}...{% endif %}</p>
+                    <p class="text-justify">{{ post.conteudo|slice(0, 500)|trim|raw }}{% if post.descricao|length > 250 %}...{% endif %}</p>
             {% endif %}
             <p>
                 <a class="label label-default"
@@ -47,12 +22,10 @@
             </p>
         </div>
     {% else %}
-
         <div class="blog-header">
             <h1 class="blog-title"><i class="fa fa-frown-o"></i> Opss..</h1>
             <p class="lead blog-description"></p>
         </div>
-
         <p class="lead">N&atilde;o foi encontrado nenhum assunto relacionado a sua Pesquisa.</p>
     {% endfor %}
 

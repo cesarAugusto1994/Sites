@@ -1,16 +1,9 @@
 {% extends 'template.html.twig' %}
 
 {% block title %}{{ post.titulo }}{% endblock %}
+{% block stylesheet %}{% endblock %}
 
-{% block stylesheet %}
-<style type="text/css">
-    #conteudo {
-        overflow-y: scroll;
-    }
-</style>
-{% endblock %}
-
-{% block content %}
+{% block body %}
 
     <div class="blog-post">
         <h2 class="blog-post-title">{{ post.titulo }}
