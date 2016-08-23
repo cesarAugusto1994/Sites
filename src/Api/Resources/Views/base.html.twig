@@ -50,8 +50,12 @@
                                 {{ app.session.get('user').user.username }}
                             {% endif %} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ app.url_generator.generate('grid_posts') }}">Grid Posts</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Posts</li>
+                            <li><a href="{{ app.url_generator.generate('grid_posts') }}">Lista</a></li>
                             <li><a href="{{ app.url_generator.generate('postForm') }}">Novo Post</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Usu&aacute;rio</li>
                             <li><a href="{{ app.url_generator.generate('profile') }}">Perfil</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Blog</li>

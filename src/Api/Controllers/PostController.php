@@ -31,6 +31,7 @@ class PostController
 
         $postsRelacionados = [];
         $tagsRelacionadas = [];
+        $countArray = 0;
 
         foreach ($tags as $tag) {
             if (!empty($tags)) {
@@ -38,6 +39,10 @@ class PostController
             }
             foreach ($tagsRelacionadas as $tags) {
                 $postsRelacionados[] = $tags->getPost();
+                $countArray++;
+                if (5 >= $countArray) {
+                   break;
+                }
             }
         }
 
@@ -152,7 +157,7 @@ class PostController
 
         $app['posts.repository']->save($post);
 
-        return $app->redirect('post/'.$post->getId().'/'.substr($post->getTitulo(), 0, 30));
+        return $app->redirect('post/'.$post->getId().'/'.str_replace('.', '+',substr($post->getTitulo(), 0, 30)));
     }
     
     /**
@@ -186,7 +191,7 @@ class PostController
             $app['tags.repository']->save($tags);
         }
         
-        return $app->redirect('post/'.$post->getId().'/'.substr($post->getTitulo(), 0, 30));
+        return $app->redirect('post/'.$post->getId().'/'.str_replace('.', '+',substr($post->getTitulo(), 0, 30)));
     }
     
     /**

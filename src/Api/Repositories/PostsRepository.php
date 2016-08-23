@@ -48,6 +48,7 @@ class PostsRepository extends EntityRepository
             ->andWhere('p.ativo = :ativo')
             ->setParameter(':titulo', '%'.$search.'%')
             ->setParameter(':ativo', true)
+            ->orderBy('p.cadastro', 'DESC')
             ->getQuery()->getResult();
     }
     
