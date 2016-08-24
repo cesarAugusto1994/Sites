@@ -62,26 +62,6 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'locale_fallbacks' => array('en'),
 ));
 
-$app->register(new \Saxulum\PaginationProvider\Provider\SaxulumPaginationProvider(), array(
-    'knp_paginator.options' => array(
-        'defaultPaginationOptions' => array(
-            'pageParameterName' => 'page',
-            'sortFieldParameterName' => 'sort',
-            'sortDirectionParameterName' => 'direction',
-            'filterFieldParameterName' => 'filterField',
-            'filterValueParameterName' => 'filterValue',
-            'distinct' => true,
-        ),
-        'subscriberOptions' => array(
-            'defaultPaginationTemplate' => '@SaxulumPaginationProvider/sliding.html.twig',
-            'defaultSortableTemplate' => '@SaxulumPaginationProvider/sortable_link.html.twig',
-            'defaultFiltrationTemplate' => '@SaxulumPaginationProvider/filtration.html.twig',
-            'defaultPageRange' => 5,
-        )
-    )
-));
-//$app['knp_paginator']->paginate($target, 1, 10);
-
 $app->register(new \Silex\Provider\SessionServiceProvider(), array(
     'session.storage.save_path' => dirname(__DIR__) . '/../var/cache/sessions/'
 ));
