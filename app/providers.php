@@ -9,10 +9,10 @@
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
     'dbs.options' => array(
         'default' => array(
-            'dbname' => 'blog',
-            'user' => 'root',
-            'password' => 'mestre',
-            'host' => 'localhost',
+            'dbname' => 'bloggrupopolo',
+            'user' => 'cezzaar',
+            'password' => 'elpro1973',
+            'host' => 'mysql796.umbler.com',
             'driver' => 'pdo_mysql',
         )
     ),
@@ -81,8 +81,6 @@ $app->register(new \Saxulum\PaginationProvider\Provider\SaxulumPaginationProvide
     )
 ));
 //$app['knp_paginator']->paginate($target, 1, 10);
-
-
 
 $app->register(new \Silex\Provider\SessionServiceProvider(), array(
     'session.storage.save_path' => dirname(__DIR__) . '/../var/cache/sessions/'
