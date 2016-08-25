@@ -31,7 +31,6 @@ class PostController
 
         $postsRelacionados = [];
         $tagsRelacionadas = [];
-        $countArray = 0;
 
         foreach ($tags as $tag) {
             if (!empty($tags)) {
@@ -39,10 +38,6 @@ class PostController
             }
             foreach ($tagsRelacionadas as $tags) {
                 $postsRelacionados[] = $tags->getPost();
-                $countArray++;
-                if (5 >= $countArray) {
-                   break;
-                }
             }
         }
 

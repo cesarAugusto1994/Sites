@@ -5,7 +5,7 @@
 
 {% block body %}
 
-    <div class="blog-post" style="padding: 0 4em;">
+    <div class="blog-post">
         <h2 class="blog-post-title">{{ post.titulo }}
             <a href="{{ app.url_generator.generate('edit_post', { id : post.id, name : post.titulo|replace({'.': '', ' ' : '+' })|lower }) }}"><button class="btn btn-flat"><span class="fa fa-edit"></span></button></a>
         </h2>

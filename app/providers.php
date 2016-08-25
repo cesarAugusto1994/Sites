@@ -9,10 +9,10 @@
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
     'dbs.options' => array(
         'default' => array(
-            'dbname' => 'bloggrupopolo',
-            'user' => 'cezzaar',
-            'password' => 'elpro1973',
-            'host' => 'mysql796.umbler.com',
+            'dbname' => 'blog',
+            'user' => 'root',
+            'password' => 'mestre',
+            'host' => 'localhost',
             'driver' => 'pdo_mysql',
         )
     ),
